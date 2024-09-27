@@ -4,40 +4,51 @@ public class Task {
 	private int id;
 	private String name;
 	private String description;
-	private String dueDate;	
-	
-	//CONSTRUCTOR
+	private String dueDate;
+
+	// CONSTRUCTOR
 	public Task(int id, String name, String description, String dueDate) {
-		setId(id);;
+		setId(id);
+		;
 		setName(name);
 		setDescription(description);
 		setDueDate(dueDate);
 	}
-	
-	
-	//GETTERS & SETTERS
+
+	public boolean sameId(int id) {
+		return this.id == id;
+	}
+
+	// GETTERS & SETTERS
 	public int getId() {
 		return id;
 	}
+
 	private void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
-	private void setName(String name) {
+
+	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getDescription() {
 		return description;
 	}
-	private void setDescription(String description) {
+
+	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public String getDueDate() {
 		return dueDate;
 	}
-	private void setDueDate(String dueDate) {
+
+	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
 	}
 
@@ -45,5 +56,5 @@ public class Task {
 	public String toString() {
 		return "ID: " + id + " | Task: " + name + " | Description: " + description + " | Date: " + dueDate;
 	}
-	
+
 }
