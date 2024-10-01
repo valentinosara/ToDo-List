@@ -47,9 +47,9 @@ public class Main {
 				break;
 
 			case 4:
-				System.out.println("Insert task ID: ");
-				int idRemove = Integer.parseInt(input.nextLine());
-				taskDAO.removeTask(idRemove);
+//				System.out.println("Insert task ID: ");
+//				int idRemove = Integer.parseInt(input.nextLine());
+				taskDAO.removeTask();
 				break;
 
 			case 5:

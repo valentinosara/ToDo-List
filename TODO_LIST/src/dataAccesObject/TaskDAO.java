@@ -3,9 +3,12 @@ package dataAccesObject;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.print.DocFlavor.INPUT_STREAM;
+
 import entities.Task;
 
 public class TaskDAO {
+	private final String SUCCESS_MESSAGE = "The task was done successfully.";
 	private ArrayList<Task> tasks;
 	int id = -1;
 
@@ -15,6 +18,7 @@ public class TaskDAO {
 
 	public void addTask(Task task) {
 		tasks.add(task);
+		System.out.println(SUCCESS_MESSAGE);
 	}
 
 	public int getNextId() {
@@ -30,7 +34,10 @@ public class TaskDAO {
 		} else {
 			for (Task task : tasks) {
 				System.out.println(task);
+				System.out.println(SUCCESS_MESSAGE);
+
 			}
+
 		}
 	}
 
@@ -52,18 +59,21 @@ public class TaskDAO {
 				System.out.println("Insert new name: ");
 				name = input.nextLine();
 				task.setName(name);
+				System.out.println(SUCCESS_MESSAGE);
 				break;
 
 			case 2:
 				System.out.println("Insert new description: ");
 				description = input.nextLine();
 				task.setDescription(description);
+				System.out.println(SUCCESS_MESSAGE);
 				break;
 
 			case 3:
 				System.out.println("Insert new due date: ");
 				dueDate = input.nextLine();
 				task.setDueDate(dueDate);
+				System.out.println(SUCCESS_MESSAGE);
 				break;
 
 			case 4:
@@ -76,6 +86,7 @@ public class TaskDAO {
 				System.out.println("Insert new due date: ");
 				dueDate = input.nextLine();
 				task.setDueDate(dueDate);
+				System.out.println(SUCCESS_MESSAGE);
 				break;
 
 			default:
@@ -85,14 +96,34 @@ public class TaskDAO {
 		}
 	}
 
-	public void removeTask(int id) {
+	public void removeTask() {
+		Scanner input = new Scanner(System.in);
 		Task task = searchTask(id);
+		int option = 0;
+//		if (task == null) {
+//			System.out.println("Cannot remove task because it does not exist.");
+//		} else {
+		System.out.println("1. Remove\n2.Remove all");
+		option = Integer.parseInt(input.nextLine());
+		switch (option) {
+		case 1:
+			System.out.println("Insert task ID: ");
+			int idRemove = Integer.parseInt(input.nextLine());
+			if (task == null) {
+				System.out.println("Cannot remove task because it does not exist.");
+			} else {
+				tasks.remove(task);
 
-		if (task == null) {
-			System.out.println("Cannot remove task because it does not exist.");
-		} else {
-			tasks.remove(task);
+			}
+			break;
+		case 2:
+			tasks.removeAll(tasks);
+			break;
+		default:
+			break;
 		}
+		System.out.println(SUCCESS_MESSAGE);
+//		}
 	}
 
 	private Task searchTask(int id) {
