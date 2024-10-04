@@ -12,6 +12,7 @@ public class TaskDAO {
 	private final String TASK_NONEXISTENT = "Cannot remove task because it does not exist.";
 	private final String TASKS_ISEMPTY = "There are no tasks available.";
 	private final String INVALID_INPUT = "Invalid input. Insert 1, 2, 3 or 4.";
+	private final String INVALID_INPUT_REMOVE = "Invalid input. Insert 1 or 2";
 	private ArrayList<Task> tasks;
 	int id = -1;
 
@@ -125,7 +126,7 @@ public class TaskDAO {
 				System.out.println(SUCCESS_MESSAGE);
 				break;
 			default:
-				System.out.println(INVALID_INPUT);
+				System.out.println(INVALID_INPUT_REMOVE);
 				break;
 			}
 		}
