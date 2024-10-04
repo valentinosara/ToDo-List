@@ -54,7 +54,7 @@ public class Task {
 
 	@Override
 	public String toString() {
-		return "ID: " + id + " | Task: " + name + " | Description: " + description + " | Date: " + dueDate;
+		return "\nID: " + id + " | Task: " + name + " | Description: " + description + " | Date: " + dueDate;
 	}
 
 }
