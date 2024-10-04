@@ -21,7 +21,13 @@ public class Main {
 			System.out.println("3. Modify task");
 			System.out.println("4. Remove tasks");
 			System.out.println("5. End program");
-			option = Integer.parseInt(input.nextLine());
+
+			try {
+				option = Integer.parseInt(input.nextLine());
+
+			} catch (NumberFormatException e) {
+				option = 6;
+			}
 
 			switch (option) {
 			case 1:
@@ -56,7 +62,7 @@ public class Main {
 				break;
 
 			default:
-				System.out.println("Invalid input. Insert 1, 2, 3, 4 or 5.");
+				System.out.println("Invalid input. Insert 1, 2, 3, 4 or 5.\n");
 				break;
 			}
 
