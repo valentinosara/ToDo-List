@@ -9,6 +9,9 @@ import entities.Task;
 
 public class TaskDAO {
 	private final String SUCCESS_MESSAGE = "The task was done successfully.";
+	private final String TASK_NONEXISTENT = "Cannot remove task because it does not exist.";
+	private final String TASKS_ISEMPTY = "There are no tasks available.";
+	private final String INVALID_INPUT = "Invalid input. Insert 1, 2, 3 or 4.";
 	private ArrayList<Task> tasks;
 	int id = -1;
 
@@ -98,32 +101,34 @@ public class TaskDAO {
 
 	public void removeTask() {
 		Scanner input = new Scanner(System.in);
-		Task task = searchTask(id);
 		int option = 0;
-//		if (task == null) {
-//			System.out.println("Cannot remove task because it does not exist.");
-//		} else {
-		System.out.println("1. Remove\n2.Remove all");
-		option = Integer.parseInt(input.nextLine());
-		switch (option) {
-		case 1:
-			System.out.println("Insert task ID: ");
-			int idRemove = Integer.parseInt(input.nextLine());
-			if (task == null) {
-				System.out.println("Cannot remove task because it does not exist.");
-			} else {
-				tasks.remove(task);
+		if (tasks.isEmpty()) {
+			System.out.println(TASKS_ISEMPTY);
+		} else {
+			System.out.println("1. Remove\n2.Remove all");
+			option = Integer.parseInt(input.nextLine());
+			switch (option) {
+			case 1:
+				System.out.println("Insert task ID: ");
+				int idRemove = Integer.parseInt(input.nextLine());
+				Task task = searchTask(idRemove);
+				if (task == null) {
+					System.out.println(TASK_NONEXISTENT);
+				} else {
+					tasks.remove(task);
+					System.out.println(SUCCESS_MESSAGE);
 
+				}
+				break;
+			case 2:
+				tasks.removeAll(tasks);
+				System.out.println(SUCCESS_MESSAGE);
+				break;
+			default:
+				System.out.println(INVALID_INPUT);
+				break;
 			}
-			break;
-		case 2:
-			tasks.removeAll(tasks);
-			break;
-		default:
-			break;
 		}
-		System.out.println(SUCCESS_MESSAGE);
-//		}
 	}
 
 	private Task searchTask(int id) {
