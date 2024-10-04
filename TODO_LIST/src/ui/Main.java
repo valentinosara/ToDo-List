@@ -25,11 +25,12 @@ public class Main {
 
 			switch (option) {
 			case 1:
-				System.out.println("Insert name: ");
+				System.out.println("To create a new task:");
+				System.out.print("Insert name: ");
 				String name = input.nextLine();
-				System.out.println("Insert description: ");
+				System.out.print("\nInsert description: ");
 				String description = input.nextLine();
-				System.out.println("Insert due date: ");
+				System.out.print("\nInsert due date: ");
 				String dueDate = input.nextLine();
 				int id = taskDAO.getNextId();
 				taskDAO.addTask(new Task(id, name, description, dueDate));
@@ -41,9 +42,7 @@ public class Main {
 				break;
 
 			case 3:
-				System.out.println("Insert task ID: ");
-				int idModify = Integer.parseInt(input.nextLine());
-				taskDAO.modifyTask(idModify, input);
+				taskDAO.modifyTask(input);
 				break;
 
 			case 4:
